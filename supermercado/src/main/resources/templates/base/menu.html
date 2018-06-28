@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+ 
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" th:fragment="menu">
+      <a class="navbar-brand" th:href="@{/}">Supermercado</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a sec:authorize="hasAnyAuthority('CLIENTE')" class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li sec:authorize="isAnonymous()" class="nav-item active">
+            <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li sec:authorize="isAnonymous()" class="nav-item active">
+            <a class="nav-link" th:href="@{/cadastro}">Cadastre-se </a>
+          </li>
+          <li class="nav-item" sec:authorize="hasAnyAuthority('GERENTE')">
+            <a class="nav-link" th:href="@{/gerencia/produtos}">Produtos</a>
+          </li>
+          <li class="nav-item" sec:authorize="hasAnyAuthority('CLIENTE')" >
+            <a class="nav-link" th:href="@{/cliente/carrinho}">Meu Carrinho</a>
+          </li>
+          <li class="nav-item" sec:authorize="hasAnyAuthority('CLIENTE')">
+            <a class="nav-link" th:href="@{/cliente/historico}">Histórico de Compras</a>
+          </li>
+          <li class="nav-item pull-right" sec:authorize="isAuthenticated()" >
+            <b class="nav-link" th:inline="text">[[${#authentication.name}]]</b>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-secondary">Entrar</a> 
+        </form>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+          <input sec:authorize="isAuthenticated()" type="submit" class="btn btn-secondary" value="Sair"/>
+        </form>
+      </div>
+    </nav>
+    
+	
+</html>

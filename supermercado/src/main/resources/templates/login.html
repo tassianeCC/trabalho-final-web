@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="base/base" lang="pt-br">
+
+<head>
+<title>Login</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div th:if="${param.error}">Email ou senha invalidos.</div>
+	<div th:if="${SUCESSO}"> .</div>
+	
+	<form th:action="@{/login}" method="post">
+	
+		<fieldset>
+			<legend>Faça seu login</legend>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email</label> <input type="email"
+					class="form-control" id="exampleInputEmail1"
+					aria-describedby="emailHelp" placeholder="Enter email"
+					name="username"></input>
+
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Senha</label> <input
+					type="password" class="form-control" id="exampleInputPassword1"
+					placeholder="Senha" name="password"></input>
+			</div>
+
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Entrar</button>
+	</form>
+
+</section>
+
+</html>

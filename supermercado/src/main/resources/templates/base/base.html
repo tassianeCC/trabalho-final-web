@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+lang="pt-br">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link th:href="@{/css/theme/bootstrap1.min.css}" rel="stylesheet"></link>
+    <title>Supermercado</title>
+</head>
+<body>
+	<div th:replace="base/menu :: menu"></div>
+		
+	<div class="container-fluid">
+		<section layout:fragment="conteudo"></section>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
